@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
 
+const homeStartingContent = "lorem ipsums fdf blah hdhsa";
+
 app.get("/", function(request, response){
-    response.render("home");
+    response.render("home",{startingContent : homeStartingContent});
 });
 
 app.listen(3000, function(){
