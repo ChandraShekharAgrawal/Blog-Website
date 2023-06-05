@@ -30,7 +30,8 @@ app.get("/compose", function(request, response){
 });
 
 app.post("/compose", function(request, response){
-    console.log(request.body.postTitle);
+    console.log(request.body.title);
+    console.log(request.body.post);
 });
 
 app.listen(3000, function(){
