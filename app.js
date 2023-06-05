@@ -16,8 +16,8 @@ const contactContent = "Roquefort cheeseburger cheese triangles. Monterey jack b
 const posts = [];
 
 app.get("/", function(request, response){
-    response.render("home",{startingContent : homeStartingContent});
-    console.log(posts);
+    response.render("home",{startingContent : homeStartingContent, postContent: posts});
+    // console.log(posts);
 });
 
 app.get("/about", function(request, response){
