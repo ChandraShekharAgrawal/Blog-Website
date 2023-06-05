@@ -13,8 +13,11 @@ const homeStartingContent = "lorem ipsums fdf blah hdhsa";
 const aboutContent = "hi this is about sefction. Rope's end spirits squiffy yawl Plate Fleet Chain Shot run a rig gangway scuttle warp. Mutiny chandler me black jack bilge rat Barbary Coast grapple coffer sloop quarter. Cat o'nine tails Spanish Main loaded to the gunwalls spirits stern jack Sail ho pink smartly gally.";
 const contactContent = "Roquefort cheeseburger cheese triangles. Monterey jack bavarian bergkase taleggio say cheese red leicester cheesy feet parmesan rubber cheese. Brie macaroni cheese croque monsieur cottage cheese paneer feta st. agur blue cheese when the cheese comes out everybody's happy. Cheese on toast squirty cheese brie everyone loves macaroni cheese babybel monterey jack cottage cheese.";
 
+const posts = [];
+
 app.get("/", function(request, response){
     response.render("home",{startingContent : homeStartingContent});
+    console.log(posts);
 });
 
 app.get("/about", function(request, response){
@@ -34,7 +37,8 @@ app.post("/compose", function(request, response){
         title: request.body.title,
         post : request.body.post
     };
-    console.log(userPost);
+    posts.push(userPost);
+    response.redirect("/");
 });
 
 app.listen(3000, function(){
