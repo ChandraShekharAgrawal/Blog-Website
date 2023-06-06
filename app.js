@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const lodash = require("lodash");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -39,6 +40,21 @@ app.post("/compose", function(request, response){
     };
     posts.push(userPost);
     response.redirect("/");
+});
+
+app.get("/posts/:postName", function(request, response){
+    const requestedTitle = request.params.postName;
+    let flag = 0;
+    for(let i=0; i< posts.length; i++){
+        if(lodash.lowerCase(posts[i].title) === lodash.lowerCase(requestedTitle)){
+            console.log(posts[i].title);
+            flag = 1;
+            break;
+        }
+    }
+    if(flag === 0){
+        console.log("Match not found");
+    }
 });
 
 app.listen(3000, function(){
