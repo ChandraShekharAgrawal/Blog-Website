@@ -48,6 +48,7 @@ app.get("/posts/:postName", function(request, response){
     for(let i=0; i< posts.length; i++){
         if(lodash.lowerCase(posts[i].title) === lodash.lowerCase(requestedTitle)){
             console.log(posts[i].title);
+            response.render("post", {Title: posts[i].title, Post: posts[i].post});
             flag = 1;
             break;
         }
